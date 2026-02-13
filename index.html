@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Valentine ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+  color:white;
+  text-align:center;
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:red;
+  transform:rotate(45deg);
+  animation:float 6s linear infinite;
+}
+
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:red;
+  border-radius:50%;
+}
+
+.heart::before{
+  top:-10px;
+  left:0;
+}
+
+.heart::after{
+  left:-10px;
+  top:0;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(100vh) rotate(45deg);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-10vh) rotate(45deg);
+    opacity:0;
+  }
+}
+
+/* Card */
+.card{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  padding:40px;
+  border-radius:20px;
+  width:90%;
+  max-width:400px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.2);
+  animation:fadeIn 2s ease;
+}
+
+h1{
+  font-family:'Pacifico',cursive;
+  font-size:36px;
+  margin-bottom:20px;
+}
+
+p{
+  margin-bottom:25px;
+}
+
+button{
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff4b7d;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+  background:#ffe6ec;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:scale(0.8);}
+  to{opacity:1; transform:scale(1);}
+}
+
+/* Hidden message */
+.message{
+  margin-top:20px;
+  display:none;
+  font-size:18px;
+  animation:fadeIn 1s ease forwards;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Happy Valentine's ❤️</h1>
+  <p>You are the most beautiful part of my life.  
+     Every moment with you is special 💕</p>
+  <button onclick="showMessage()">Click Me 💌</button>
+  <div class="message" id="message">
+    I Love You Forever 💖  
+    Will you be my Valentine? 🌹
+  </div>
+</div>
+
+<script>
+// Floating hearts generator
+for(let i=0;i<25;i++){
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.animationDuration = (3 + Math.random()*3) + "s";
+  document.body.appendChild(heart);
+}
+
+function showMessage(){
+  document.getElementById("message").style.display = "block";
+}
+</script>
+
+</body>
+</html>
